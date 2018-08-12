@@ -1,0 +1,26 @@
+@startuml
+
+autonumber
+
+title Verified Credentials for Offline Interactions\n
+
+actor "Alice" as Holder
+participant "Holder-Agent" as HA
+participant "Verifier-Agent" as VA
+actor "Bob" as Verifier
+
+group Secure Connection for Proofing Process
+Holder->HA: Open Digital Wallet
+Verifier->VA: Open Digital Wallet
+Verifier->VA: Select desired proof request
+Verifier->VA: Start challenge process
+VA->HA: Request connection
+HA->VA: Accept Connection
+VA->HA: Send proof-request
+HA->HA: Verify proof-request
+Holder->HA: Select credentials for response
+HA->VA: Send proof-response
+VA->VA: Validate response
+end
+
+@enduml
