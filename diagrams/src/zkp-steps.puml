@@ -5,12 +5,10 @@ autonumber
 title Generic ZKP Steps for Offline Interactions \n
 
 participant "Sovrin Network" as SN
-actor "Alice" as Holder
 participant "Holder-Agent" as HA
 participant "Issuer-Agent" as IA
 participant "Trust Framework Authority" as TFA
 participant "Verifier-Agent" as VA
-actor "Bob" as Verifier
 participant "Sovrin Network" as SN
 
 group Credential Issuance
