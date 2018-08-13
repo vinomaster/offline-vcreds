@@ -73,7 +73,7 @@ A solution to this problem MUST allow the Holder's Agent to perform the followin
     * Public Key of Issuer of the Credential
     * Issuer's *Certified Issuer Credential* from the TFA
 
-![zkp-steps](./diagrams/images/zkp-step.png)
+![zkp-steps](./diagrams/images/zkp-steps.png)
 
 ### Open Questions
 * Can Verifiable Credential support combined credential Proofs? [See proposal and discussion here](https://docs.google.com/document/d/10e6lcsX0kiXkWX4_79hD1fb4p_AbFGsRm90eJJKFayI/edit?ts=5b697a4b#heading=h.5n2rgn5i7d3g) as well as the [Pull Request](https://github.com/sovrin-foundation/vc-data-model/tree/anoncred).
