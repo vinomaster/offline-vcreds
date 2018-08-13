@@ -1,5 +1,10 @@
 # Verifiable Credentials for Offline Interactions
 
+## Disclaimer
+This discussion is being initiated during a period, namely Summer 2018, whereby the Sovrin Trust Framework (STFv2) is still in draft status.
+
+While offline interaction scenarios are real and there is a understanding that this problem domain may possibly be an inhibitor for SSI/VC adoption by key stakeholders like DMVs, the solution concepts presented herein need to be matured inline with the roadmap for the Sovrin Trust Framework (Versions 2 and 3). It is anticipated that the proposal outlined herein would be targeted for STFv3.
+
 ## Abstract
 [Hyperledger Indy](https://www.hyperledger.org/projects) ("Indy") provides an implementation of Verifiable Credentials using Zero Knowledge Proofs ("ZKP") whereby there is an assumption that both the holder and the verifier are both online (connected to the internet). This paper proposes an approach for how Indy can be used under situation where the stakeholders are offline.
 
@@ -15,6 +20,10 @@
 The Sovrin Community, which leverages Indy, uses [Camenisch-Lysyanskaya (CL)](http://groups.csail.mit.edu/cis/pubs/lysyanskaya/cl02b.pdf)  signatures which are zero-knowledge proof signatures. When using CL signatures, the holder of a credential can prove a wide variety of facts about the credential, including individual attribute values, without revealing the actual data, and with just one encoding of the credential and signature.
 
 CL signatures are generated using a blinded “link secret” that allows the holder to create a proof across any set claims in any set of credentials issued using the same link secret. For example, a verifier may request proof that specific identity traits (attributes) were issued to an individual (the holder) without revealing information about the holder -issuer relationship.
+
+Additionally, the concepts being proposed for the STFv2 includes a set of roles associated with a spectrum of trust for domain specific trust frameworks. This proposal assumes that a *Trust Framework Authority (TFA)* is an entity that is defined by a Domain Specific Trust Framework (DSTF). A TFA has many responsibilities, one of which includes the issuance of a “Certified Issuer Credential” as the TFA is a root of trust in a DSTF for Issuers.
+
+![trust-spectrum](./diagrams/images/trust-spectrum.png)
 
 ## Purpose
 Indy, as of v1.6.1, does not support the a ZKP approach for responding to proof-requests under the following conditions:
@@ -46,9 +55,30 @@ Alice, a trooper for the State of Arizona, patrols the rural [Interstate 15](htt
   * All presented claims are verified to be signed by the issuer of origin
   * All presented claims are valid, not expired.
 6. Verifier MUST be able to ascertain when the last time the Holder was online. Feedback from Law Enforcement is that anything >24hrs is a red-flag.
+7. The Verifier MUST not be required to have knowledge or a relationship with the Issuer of a credential used in proof-response.
 
 ## Applicability of ZKPs
-Hoa w do we use ZKP to addresses these scenarios?
+We assume that with adequate changes to the Verifiable Credential Schema along with changes to Indy for support of hierarchical trust and the caching of roots of trust by the Verifier, a solution can be implemented without dramatic changes to the existing ZKP flow of Indy.
 
-## Solution Guidance
-How can Indy support this approach?
+## Discussion Topics
+
+### Presentment of Proofs
+A solution to this problem MUST allow the Holder's Agent to perform the following tasks:
+
+* Holder selects one or more identity traits (attributes) from one or more credentials from his/her digital wallet.
+* For each unique credential that will be included in the proof-response:
+
+  1. Generate a ZKP that the each selected attribute is contained in the issued credential that is held by the Holder.
+  2. Send the above ZKP along with:
+    * Public Key of Issuer of the Credential
+    * Issuer's *Certified Issuer Credential* from the TFA
+
+![zkp-steps]()./diagrams/images/zkp-step.png)
+
+### Open Questions
+* Can Verifiable Credential support combined credential Proofs? [See proposal and discussion here](https://docs.google.com/document/d/10e6lcsX0kiXkWX4_79hD1fb4p_AbFGsRm90eJJKFayI/edit?ts=5b697a4b#heading=h.5n2rgn5i7d3g) as well as the [Pull Request](https://github.com/sovrin-foundation/vc-data-model/tree/anoncred).
+* Can Indy support hierarchical proofs within ZKP processing? This implies recursive verification of Issuer Certification Chain (list of trusted certifiers backing the Issuer).
+* How does Verifier's proof-response verification process change for the inclusion of the known Trusted Root Authorities.
+
+## Solution Description
+TBD

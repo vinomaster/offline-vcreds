@@ -1,0 +1,46 @@
+@startuml
+
+autonumber
+
+title Generic ZKP Steps for Offline Interactions \n
+
+participant "Sovrin Network" as SN
+actor "Alice" as Holder
+participant "Holder-Agent" as HA
+participant "Issuer-Agent" as IA
+participant "Trust Framework Authority" as TFA
+participant "Verifier-Agent" as VA
+actor "Bob" as Verifier
+participant "Sovrin Network" as SN
+
+group Credential Issuance
+IA->TFA: Issuer requests certification\nby Trust Framework Authority\nassociated with the Domain Specific\nTrust Framework
+TFA->IA: Issue a Certified Issuer Credential to Issuer
+IA->HA: Upon request, issue a credential to holder
+note over HA, IA
+  Issuer always includes with the
+  credential\nthe Public Key of Issuer
+  and the Certified Issuer Credential.
+end note
+end
+
+group Verifier Online Readiness
+note over VA, SN
+  At least once every 24hr period,
+  a Verifier should refresh cache of known TFAs.
+  This frequency should be defined in DSTF.
+  Also the Sovrin Alliance DSTF may be applicable here.
+end note
+VA->SN: Download the List of TFA Public Keys\nfor the entire Network or Domain Specific Framework
+VA->SN: Download the List of Domain Specific Schemas
+end
+
+group Offline Interaction Processing
+VA->HA: Send proof-requests
+HA->HA: Select from the digital wallet which attributes will be used
+HA->HA: Create Proof response (see Proof Presentment Flow)
+HA->VA: Send proof response
+VA->VA: Validate response using TFA cache
+end
+
+@enduml
