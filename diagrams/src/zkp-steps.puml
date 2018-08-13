@@ -17,7 +17,7 @@ TFA->IA: Issue a Certified Issuer Credential to Issuer
 IA->HA: Upon request, issue a credential to holder
 note over HA, IA
   Issuer always includes with the
-  credential\nthe Public Key of Issuer
+  credential the Public Key of Issuer
   and the Certified Issuer Credential.
 end note
 end
