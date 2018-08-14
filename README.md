@@ -10,10 +10,13 @@ While offline interaction scenarios are real and there is a understanding that t
 
 ## Authors
 
-* Jan Camenisch
-* Manu Drijvers
-* Maria Dubovitskaya
-* Dan Gisolfi
+* [Dfinity](dfinity.org)
+  * Jan Camenisch
+  * Manu Drijvers
+  * Maria Dubovitskaya
+* [IBM](ibm.com)
+  * Dan Gisolfi
+  * Michael Osborne
 
 ## Background
 
@@ -40,6 +43,8 @@ Situations whereby identity proof challenges may occur without the availability 
 * Fishing/Game Warden proofing a sportsman in a remote area.
 * Emergency Response Professional presenting credentials to Situation Officials for access and participation.
 
+For further evidence to justify offline requirements, please refer to the domain specific work being performed by the [ISO18013-5 mDL Workgroup](https://www.iso.org/standard/63798.html) along with these explicit [offline and online interoperability testing requirements for mDL readers](./docs/iso/20180808-mDL-PIP-test-event-documentation.docx).
+
 ## User Story
 Alice, a trooper for the State of Arizona, patrols the rural [Interstate 15](https://en.wikipedia.org/wiki/Interstate_15_in_Arizona) highway during night shifts and is often presented with the precarious task of challenging truckers and motorists during routine traffic stops. Bob is a trucker that uses I-15 as a common bypass between Nevada and Utah. After a long days journey, Bob caught himself dozing at the wheel. Unfortunately, Alice also observed him dangerously swerving so she pulled him over. While Alice runs a license plate scans from here patrol car, she has no way of knowing who is actually the operator of the truck and whether that person is authorized to be the operator. Using her loud speak she request the driver to place his smartphone in discovery mode and prepare to accept and identity challenge. Using her digital verifier on her smartphone she sends a proof-request for multiple credentials, namely drivers license, auto insurance and vehicle registration. Alice's request is a standard AZ defined proof request that requires all attributes of all credentials to be revealed. Bob, now very alert and upset with himself, opens his digital wallet to accept the challenge. Since he carries multiple credentials (personal and professional), he must respond with his commercial driver's license (CDL), the insurance and vehicle registration credentials for the truck as provided by his employer. Alice receives Bob's response and is able to verify that the claims in each credential was signed by the issuer of the credential. Alice then proceed's to confront Bob knowing a fair amount of details about him including what he looks.        
 
@@ -47,6 +52,7 @@ Alice, a trooper for the State of Arizona, patrols the rural [Interstate 15](htt
 
 ## Requirements
 
+### General
 1. The solution SHOULD enable [Safely Vetting a Drivers License](https://www.ibm.com/blogs/blockchain/2016/06/safely-vetting-a-digital-drivers-license/)
 2. Verifier and Holder MUST be able to connect without establishing a broadband connection.
 3. Verifier MUST be able to request a mix of revealed and unrevealed attributes across a range of credentials from multiple issuers.
@@ -56,6 +62,9 @@ Alice, a trooper for the State of Arizona, patrols the rural [Interstate 15](htt
   * All presented claims are valid, not expired.
 6. Verifier MUST be able to ascertain when the last time the Holder was online. Feedback from Law Enforcement is that anything >24hrs is a red-flag.
 7. The Verifier MUST not be required to have knowledge or a relationship with the Issuer of a credential used in proof-response.
+
+### Sample Verifiable Credential Schemas
+A starter set of industry domain examples for verifiable credential schemas are provided [here](https://github.com/vinomaster/vcred-samples). Ideally, once a solution is identified for offline support in [Sovrin](http://sovrin.org) then these exemplars can be modified for schema comoliance and used for **testing the solution**. 
 
 ## Applicability of ZKPs
 We assume that with adequate changes to the Verifiable Credential Schema along with changes to Indy for support of hierarchical trust and the caching of roots of trust by the Verifier, a solution can be implemented without dramatic changes to the existing ZKP flow of Indy.
