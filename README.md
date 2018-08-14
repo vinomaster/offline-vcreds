@@ -6,7 +6,7 @@ This discussion is being initiated during a period, namely Summer 2018, whereby 
 While offline interaction scenarios are real and there is a understanding that this problem domain may possibly be an inhibitor for SSI/VC adoption by key stakeholders like DMVs, the solution concepts presented herein need to be matured inline with the roadmap for the Sovrin Trust Framework (Versions 2 and 3). It is anticipated that the proposal outlined herein would be targeted for STFv3.
 
 ## Abstract
-[Hyperledger Indy](https://www.hyperledger.org/projects) ("Indy") provides an implementation of Verifiable Credentials using Zero Knowledge Proofs ("ZKP") whereby there is an assumption that both the holder and the verifier are both online (connected to the internet). This paper proposes an approach for how Indy can be used under situation where the stakeholders are offline.
+[Hyperledger Indy](https://www.hyperledger.org/projects) ("Indy") provides an implementation of Verifiable Credentials using Zero Knowledge Proofs ("ZKP") whereby there is an assumption that both the holder and the verifier are both online (connected to the internet). This repo outlines the problem for why Indy needs to address the situation where the stakeholders are offline. This problem has been captured as [Indy Epic 1591](https://jira.hyperledger.org/browse/INDY-1591).
 
 ## Authors
 
@@ -64,7 +64,7 @@ Alice, a trooper for the State of Arizona, patrols the rural [Interstate 15](htt
 7. The Verifier MUST not be required to have knowledge or a relationship with the Issuer of a credential used in proof-response.
 
 ### Sample Verifiable Credential Schemas
-A starter set of industry domain examples for verifiable credential schemas are provided [here](https://github.com/vinomaster/vcred-samples). Ideally, once a solution is identified for offline support in [Sovrin](http://sovrin.org) then these exemplars can be modified for schema comoliance and used for **testing the solution**. 
+A starter set of industry domain examples for verifiable credential schemas are provided [here](https://github.com/vinomaster/vcred-samples). Ideally, once a solution is identified for offline support in [Sovrin](http://sovrin.org) then these exemplars can be modified for schema compliance and used for *testing the solution*.
 
 ## Applicability of ZKPs
 We assume that with adequate changes to the Verifiable Credential Schema along with changes to Indy for support of hierarchical trust and the caching of roots of trust by the Verifier, a solution can be implemented without dramatic changes to the existing ZKP flow of Indy.
