@@ -85,9 +85,14 @@ A solution to this problem MUST allow the Holder's Agent to perform the followin
 ![zkp-steps](./diagrams/images/zkp-steps.png)
 
 ### Open Questions
-* Can Verifiable Credential support combined credential Proofs? [See proposal and discussion here](https://docs.google.com/document/d/10e6lcsX0kiXkWX4_79hD1fb4p_AbFGsRm90eJJKFayI/edit?ts=5b697a4b#heading=h.5n2rgn5i7d3g) as well as the [Pull Request](https://github.com/sovrin-foundation/vc-data-model/tree/anoncred).
+* Can Verifiable Credential support combined credential Proofs? [See proposal and discussion here](https://docs.google.com/document/d/10e6lcsX0kiXkWX4_79hD1fb4p_AbFGsRm90eJJKFayI/edit?ts=5b697a4b#heading=h.5n2rgn5i7d3g) as well as the following pull requests:
+  * [Anoncred Data Model](https://github.com/sovrin-foundation/vc-data-model/tree/anoncred)
+  * [VC PR 213](https://github.com/w3c/vc-data-model/pull/213)
+  * [VC PR 214](https://github.com/w3c/vc-data-model/pull/214)
 * Can Indy support hierarchical proofs within ZKP processing? This implies recursive verification of Issuer Certification Chain (list of trusted certifiers backing the Issuer).
 * How does Verifier's proof-response verification process change for the inclusion of the known Trusted Root Authorities.
+
+
 
 ## Solution Description
 TBD
